@@ -1,0 +1,313 @@
+﻿body {
+}
+#map{
+    cursor: default !important; 
+}
+#map.wait{
+    cursor:wait; 
+}
+/************* bootstrap4.X******************/
+#mainmenu .container-fluid{
+    display:block;
+}
+#mainmenu .container-fluid .navbar-collapse {
+    padding:0 1.5em;
+}
+@media (min-width: 768px) {
+    #mainmenu .container-fluid .navbar-collapse {
+        float: right;
+    }
+}
+ .nav-link {
+    color: rgba(255,255,255,1);
+}
+
+.navbar {
+    padding: 0;
+}
+#mainmenu .dropdown-menu{
+    border-radius:0 0 .25rem .25rem;
+}
+.pinctrl .checkbox-glyphicon {
+    top:0px;
+}
+/************* bootstrap4.X******************/
+#mainmenu .navbar-nav .nav-link {
+    border-radius: 6px;
+    /*padding: 0 2px;*/
+    margin-right: 2px;
+    cursor: pointer;
+}
+.navbar-inverse .navbar-nav > li > a.selected {
+    color: #ff0;
+    background-color: rgba(255,255,255,.1)
+}
+
+#mainmenu .navbar-nav .nav-link img {
+    height: 1.5em;
+    width: 1.5em;
+    /*display:grid;*/
+}
+#mainmenu .navbar-nav .nav-link:before {
+    display: none;
+}
+.popu-ctrl .jsPanel-hdr-l-text > img {
+    width: 1.2em;
+    height: 1.2em;
+}
+.gisdrawtool label{
+    word-break:keep-all;
+}
+.leaflet-draw-tooltip{
+    white-space:nowrap;
+    margin-left:1.5em;
+}
+
+#drawDiv.gisdrawtool .pointimg {
+    background-image: url("../../Scripts/gis/images/meter/green.png");
+    /*background-image: url("../../Scripts/gis/images/circleround_glass.png");*/
+    /*width: 24px;*/
+    /*height: 24px;*/
+}
+#drawDiv.gisdrawtool .textimg {
+    content:"A";
+ }
+#drawDiv.gisdrawtool .textimg:after {
+    content: "A";
+    position: absolute;
+    left: 16px;
+    font-size: 22px;
+    top: 2px;
+    color: white;
+    text-shadow: 0 0 2px red;
+}
+/*.leaflet-div-icon {
+    background: transparent;
+    border: none;
+}
+
+.leaflet-marker-icon .icon-text {
+    position: relative;
+    top: -42px;
+    font-size: 12px;
+    width: 25px;
+    text-align: center;
+}*/
+/*.leaflet-tooltip.leaflet-tooltip-label-drawtext {
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    box-shadow:none;
+    margin-top: -8px;
+}
+.leaflet-tooltip-top.leaflet-tooltip-label-drawtext:before {
+    position: relative;
+    border: none;
+    margin-bottom: 0;
+}*/
+/*.leaflet-tooltip-label-drawtext > label {
+    top: 12px;
+}*/
+#drawDiv .calresult{
+    display:none;
+}
+#drawDiv.gisdrawtool #draw-color-style-div lable {
+    color:#aaa !important;
+}
+.textIcon {
+    height: auto !important;
+}
+.draw-text-contanier {
+    background-color: rgba(255,255,255,.5);
+    border-radius: 4px;
+    border: 1px #aaa solid;
+    width: 100%;
+    height: 100%;
+    /*text-align:center;*/
+}
+.draw-text-contanier.display-label {
+    background-color: transparent !important;
+    display: inline-block;
+    border:none;
+}
+.draw-text-contanier label {
+    line-height: 28px;
+    font-size: 1.75em;
+    font-weight: bold;
+    text-shadow: 0 0 3px #aaa;
+    word-break: keep-all;
+}
+.draw-text-contanier .glyphicon-ok {
+    top: 0px;
+}
+.leaflet-interactive.textIcon-drawing {
+    display: none;
+}
+.leaflet-tooltip .draw-text-contanier label {
+    line-height:normal;
+    font-size:1.5em;
+    margin-bottom:0;
+}
+#measurDiv .ctrlinfo {
+    display: none;
+}
+#measurDiv {
+    color:#333333;
+}
+#measurDiv .btn:before{
+    color:#000000 !important;
+}
+/************window-info-content************/
+.leaflet-popup-content .popupGeoJson-info-content {
+    max-height: 180px;
+    min-height: 120px;
+    overflow: auto;
+}
+
+.popupGeoJson-info-content .carousel-inner {
+  /*  max-height: 200px;
+    overflow: auto;
+    padding: 0 16px;*/
+  padding:0 2em;
+}
+.popupGeoJson-info-content .carousel-control-prev:hover, .popupGeoJson-info-content .carousel-control-next:hover {
+    color: blue;
+}
+.popupGeoJson-info-content .carousel-indicators {
+    margin-bottom: 4px;
+    position: fixed;
+}
+.popupGeoJson-info-content .carousel-indicators li {
+    background-color: #999;
+}
+.popupGeoJson-info-content .left > .glyphicon-chevron-left {
+    left: -1em;
+}
+.popupGeoJson-info-content .right > .glyphicon-chevron-right {
+    right: -1em;
+}
+.popupGeoJson-info-content.only-one-data .carousel-indicators, .popupGeoJson-info-content.only-one-data .carousel-control {
+    display: none;
+}
+
+/************window-info-content************/
+#positionDiv .container {
+    margin-bottom: .3em;
+}
+#positionDiv .container .div {
+    margin-bottom: .1em;
+}
+#positionDiv .container > div:first-child {
+    /*border-bottom: 1px #aaa solid;*/
+    margin-bottom:0px;
+}
+#positionDiv .container > .col-12.form-inline {
+    padding:0 0 2px 0;
+
+}
+#positionDiv .container .glyphicon {
+    top: 0;
+}
+#positionDiv .address-geocode .input-group-addon.btn {
+    border-radius: 0 .25rem .25rem 0;
+}
+#positionDiv .address-geocode .double-click-position {
+    display: none;
+}
+#positionDiv .input-group {
+    margin-bottom: 2px;
+}
+/*.bootstrap-select .inner {
+    max-height: 200px !important;
+}*/
+.bootstrap-select button {
+    border: 1px solid #ced4da;
+}
+.bootstrap-select .inner .dropdown-item{
+    padding-top:0;
+    padding-bottom:0;
+}
+.leaflet-infowindow-title {
+    white-space: nowrap;
+    text-shadow: 0 0 2px white;
+    color: black;
+    font-weight: bold;
+}
+.leaflet-infowindow-title > label {
+    font-weight:normal;
+}
+
+/****************layerControl******************/
+#layerControlDiv > div > a {
+    color: white;
+    font-size: 1.5em;
+    width: 100%;
+    margin-left: 4px;
+    margin-bottom: 6px;
+    cursor: pointer;
+}
+#layerControlDiv > div > a > label {
+    cursor: pointer;
+}
+#layerControlDiv > div > a .caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-top: -.2em;
+    margin-right:.2em;
+    /*margin-left: .1em;*/
+    vertical-align: middle;
+    border-top: .8em dashed;
+    /*border-top: 4px solid\9;*/
+    border-right: .4em solid transparent;
+    border-left: .4em solid transparent;
+    transition: transform .2s ease-in;
+}
+#layerControlDiv > div > a.collapsed .caret {
+    transform: rotate(-90deg)
+}
+#layerControlDiv .meter {
+    /*display:block;*/
+    padding-left: .6em;
+}
+#layerControlDiv .pinctrl {
+    padding-bottom: 2px;
+    padding-left: 16px;
+}
+#layerControlDiv .pinctrl > .ctrl > label {
+    display: flex;
+    display: inline-flex;
+}
+#layerControlDiv .pinctrl  .legend, #layerControlDiv .pinctrl .opacity-slider {
+    display: none;
+}
+#layerControlDiv .pinctrl.show  .legend, #layerControlDiv .pinctrl.show .opacity-slider {
+    display: block;
+}
+#layerControlDiv .pinctrl .checkbox-name {
+    word-break: keep-all;
+}
+/****************layerControl******************/
+
+.measur-icon .glyphicon {
+  /*  background: url(../../images/測量.png);
+    background-repeat: no-repeat;
+    background-size: cover;*/
+}
+
+
+#map, #map.blackstyle {
+    background: white !important;
+}
+#map.blackstyle .leaflet-tile-pane{
+    opacity:0;
+}
+
+
+
+input[type=checkbox]:checked {
+    height: 100%;
+}
+#sewer-meter .ctrl input[type=checkbox] {
+    margin-bottom: 2px !important;
+}

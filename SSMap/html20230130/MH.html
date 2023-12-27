@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=7, IE=9, IE=10">
+
+    <title>羅東污水下水道地理資訊系統-污水人孔主題圖</title>
+
+    <!--[if lt IE 9]>
+        <script src="/Scripts/html5.js"></script>
+    <![endif]-->
+    <link href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css" type="text/css" rel="stylesheet" />
+
+    <!--<link href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">-->
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Scripts/gis/b3/css/bootstrap.css" rel="stylesheet" />
+
+    <link href="Scripts/gis/select/bselect/bootstrap-select.min.css" rel="stylesheet" />
+    <link href="Scripts/gis/jspanel/jspanel.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="Scripts/gis/bootstraptable/bootstrap-table.min.css"> <!---->
+    <link href="Scripts/gis/Main.css" rel="stylesheet" />
+    <link href="Scripts/gis/animation.css" rel="stylesheet" />
+    <link href="Scripts/gis/leafletExt.css" rel="stylesheet" />
+    <link href="Content/prj/prj.css" rel="stylesheet" />
+    <link href="Content/prj/thememap.css" rel="stylesheet" />
+     
+    <script src="Scripts/jquery-3.0.0.min.js"></script>
+    <script src="Scripts/gis/jquery/jquery-ui-1.10.4.min.js"></script>
+
+    <script src="Scripts/gis/jquery/jquery.ui.touch-punch.min.js"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+            crossorigin=""></script>
+    <!--<script src="Scripts/esri-leaflet-2.5.1/dist/esri-leaflet.js"></script>-->
+    <script src="https://unpkg.com/esri-leaflet@2.3.2/dist/esri-leaflet.js"
+            integrity="sha512-6LVib9wGnqVKIClCduEwsCub7iauLXpwrd5njR2J507m3A2a4HXJDLMiSZzjcksag3UluIfuW1KzuWVI5n/cuQ=="
+            crossorigin=""></script>
+</head>
+<body>
+    <div id="mainmenu" class="navbar  fixed-top navbar-expand-md navbar-light bg-light base-background offdisplay" style="z-index:950;" data-ctrl-cache="false">
+
+        <div class="container-fluid" style="width:100%">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <div class="navbar-collapse collapse ">
+                <ul class="nav navbar-nav">
+                    <li><a href="#basemapDiv" class="posit-ctrl-menu" data-default-show="true">底  圖</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="map">
+    </div>
+    <div class="popu-ctrl-container row-fluid">
+        <div class="basemapDivContainer" style="position:absolute;top:10px; left:10px;">
+            <div id="basemapDiv" data-display-direction="left" style="float: right; cursor: pointer"></div>
+        </div>
+    </div>
+    <div id="data-container">
+        <div class="accordion" id="accordion-container">
+            <div class="card"> 
+                <div class="card-header" id="headingOne">
+                    <button class="btn btn-block text-center collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        進階篩選 <span class="glyphicon glyphicon-play pull-right"></span>
+                    </button>
+                </div>
+
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion-container">
+                    <div class="card-body">
+                        <!--<form>-->
+                        <div class="form-group row">
+                            <label for="input-no" class="col-sm-2 col-form-label">人孔編號</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control data-field" id="input-no" data-field="MH_NO" data-filter-type="like">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="select-type" class="col-sm-2 col-form-label">人孔形式</label>
+                            <div class="col-sm-10">
+                                <select class="form-control data-field" id="select-type" data-field="MH_TYPE"></select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="select-tit" class="col-sm-2 col-form-label">工程名稱</label>
+                            <div class="col-sm-10">
+                                <select class="form-control data-field" id="select-tit" data-field="CONS_TIT"></select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="input-dist" class="col-sm-2 col-form-label">鄉鎮</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control data-field" id="input-dist" data-field="DIST" data-filter-type="like">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="input-dist" class="col-sm-2 col-form-label">村里</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control data-field" id="input-village" data-field="VILLAGE" data-filter-type="like">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                <button class="btn btn-primary set-filter">篩選</button>
+                                <button class="btn btn-outline-info clear-filter">清除</button>
+                            </div>
+                        </div>
+                        <!--</form>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <table></table>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/gis/bootstraptable/bootstrap-table.js"></script>
+    <script src="Scripts/gis/select/bselect/bootstrap-select.min.js"></script>
+    <script src="Scripts/gis/Main.js"></script>
+    <script src="Scripts/gis/helper.js"></script>
+    <script src="Scripts/gis/ext/meter/BasePinCtrl.js"></script>
+    <script src="Scripts/gis/ext/meter/LBasePinCtrl.js"></script>
+    <script src="Scripts/gis/ext/baselayer/MapBaseLayer.js"></script>
+    <script src="Scripts/gis/ext/baselayer/LMapBaseLayer.js"></script>
+    <script src="Scripts/gis/ext/leaflet/Dou.Popop.js"></script>
+
+
+    <script src="Scripts/prj/initmaphelper.js"></script>
+    <script src="Scripts/prj/data.js"></script>
+    <script src="Scripts/prj/thememap.js"></script>
+    <script src="Scripts/prj/mh.js"></script>
+</body>
+</html>

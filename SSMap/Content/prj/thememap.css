@@ -1,0 +1,127 @@
+﻿body {
+    --tabletop: 42px;
+}
+.show-mainmenu {
+    display: none;
+}
+#map, #data-container, .popu-ctrl-container {
+    width: 50%;
+    position: absolute;
+}
+#data-container {
+    position: absolute;
+    height: 100%;
+    left: 50%;
+    top: 0px;
+    /*background-color:gray;*/
+    overflow: auto;
+}
+.layer-display-control{
+    top:0;
+    right:0;
+    position:absolute;
+    background:rgba(255,255,255,.8);
+    border-radius:0 0 0 4px;
+    padding:4px 8px;
+}
+.layer-display-control label {
+    cursor:pointer;
+}
+.layer-display-control input {
+    vertical-align:baseline !important;
+}
+#data-container .accordion .card-header > button > span {
+    transition: all .4s;
+    transform: rotate(-360deg);
+}
+#data-container .accordion .card-header > button:not(.collapsed) > span{
+    transform:rotate(-270deg);
+}
+#data-container .card-header {
+    padding: 4px 20px;
+    padding: 0px;
+}
+#data-container .card-body > .row > label{
+    width:126px;
+    flex:none !important;
+    max-width:none !important;
+}
+#data-container .card-body > .row > div {
+    width: calc( 100% - 126px );
+    flex: none !important;
+    max-width: none !important;
+}
+
+#data-container .card-body {
+    padding: .4em 1.25em;
+}
+#data-container .card-body .form-group {
+    margin-bottom: .4rem;
+} 
+#data-container > .bootstrap-table {
+    height: calc( 100% - 42px ) !important;
+    padding: 4px;
+}
+@media (min-height: 609px) {
+    #data-container {
+        overflow: hidden;
+        /*已由tabletop控制table高度*/
+    }
+    #data-container > .bootstrap-table {
+        height: calc( 100% - var(--tabletop) ) !important;
+    }
+}
+#data-container > .bootstrap-table > .fixed-table-container{
+    height: 100% !important;
+}
+#data-container > .bootstrap-table > .fixed-table-container td .info {
+    cursor:pointer;
+}
+
+.bootstrap-table .fixed-table-container .table thead th .th-inner,.table th, .table td {
+    padding: .25rem;
+}
+@media (min-width: 1080px) {
+    #map, .popu-ctrl-container {
+        width: 55%;
+    }
+
+    #data-container {
+        width: 45%;
+        left: 55%;
+    }
+}
+@media (min-width: 1280px) {
+    #map, .popu-ctrl-container {
+        width: 60%;
+    }
+    #data-container {
+        width: 40%;
+        left:60%;
+    }
+}
+@media (min-width: 1580px) {
+    #map, .popu-ctrl-container {
+        width: 66%;
+    }
+
+    #data-container {
+        width: 34%;
+        left: 66%;
+    }
+}
+@media (max-width: 512px) {
+    #map, #data-container, .popu-ctrl-container {
+        width: 100%;
+        position: relative;
+        left: 0;
+    }
+    .popu-ctrl-container{
+        position:absolute;
+    }
+    .basemapDivContainer {
+        left: 0px !important;
+        top: 0px !important;
+    }
+}
+

@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=7, IE=9, IE=10, IE=11">
+
+    <title>羅東污水下水道地理資訊系統</title>
+
+    <!--[if lt IE 9]>
+        <script src="/Scripts/html5.js"></script>
+    <![endif]-->
+
+    <link href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css" type="text/css" rel="stylesheet" />
+
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Scripts/gis/b3/css/bootstrap.css" rel="stylesheet" />
+
+    <link href="Scripts/gis/select/bselect/bootstrap-select.min.css" rel="stylesheet" />
+    <link href="Scripts/gis/jspanel/jspanel.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="Scripts/gis/bootstraptable/bootstrap-table.min.css"> <!---->
+    <link href="Scripts/gis/Main.css" rel="stylesheet" />
+    <link href="Scripts/gis/leafletExt.css" rel="stylesheet" />
+    <link href="Scripts/gis/animation.css" rel="stylesheet" />
+    <link href="Content/prj/prj.css" rel="stylesheet" />
+
+    <!--<script src="Scripts/jquery-1.9.1.min.js"></script>-->
+    <script src="Scripts/jquery-3.0.0.min.js" type="text/javascript"></script>
+    <script src="Scripts/gis/jquery/jquery-ui-1.10.4.min.js"></script>
+    <script src="Scripts/gis/jquery/jquery.ui.touch-punch.min.js"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+            crossorigin=""></script>
+    <script src="https://unpkg.com/esri-leaflet@2.3.2/dist/esri-leaflet.js"
+            integrity="sha512-6LVib9wGnqVKIClCduEwsCub7iauLXpwrd5njR2J507m3A2a4HXJDLMiSZzjcksag3UluIfuW1KzuWVI5n/cuQ=="
+            crossorigin=""></script>
+</head>
+<body>
+    <div id="mainmenu" class="navbar fixed-top base-background navbar-inverse navbar-expand-md" style="z-index:950;" data-ctrl-cache="false">
+
+        <div class="container-fluid" style="width:100%">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <!--<span class="navbar-toggler-icon"></span>-->
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--<a class="navbar-brand" href="/" title="Responsive design code editor for front-end developers.">Codeply</a>-->
+            </div>
+
+            <div class="navbar-collapse collapse ">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-item"><a href="#drawDiv" class="popu-ctrl-menu nav-link" data-default-show="false"><img src="images/標註功能.png">標註功能</a></li>
+                    <li class="nav-item"><a href="#positionDiv" class="popu-ctrl-menu nav-link" data-theme="info" data-default-show="false"><img src="images/定位功能.png">定位功能</a></li>
+                    <li class="nav-item"><a href="#layerControlDiv" class="popu-ctrl-menu nav-link" data-default-width="280" data-default-height="500" data-default-show="false"><img src="images/圖資套疊.png">圖資套疊</a></li>
+                    <li class="dropdown nav-item">
+                        <a href="#" class="dropdown-toggle  tools-group-ctrl nav-link" data-toggle="dropdown" data-default-show="true"><img src="images/地圖工具.png">地圖工具<b class="caret"></b></a>
+                        <ul class="dropdown-menu" style="text-shadow:none;top:100px; right:10px;float: right; cursor: pointer;" data-display-direction="right">
+                            <li class="nav-item"><a href="#" class="nav-link " id="_zoomin" data-glyphicon="glyphicon-zoom-in ">放  大</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link " id="_fullbounds" data-glyphicon="glyphicon-home">全  景</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link " id="_zoomout" data-glyphicon="glyphicon-zoom-out">縮  小</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link" id="_print" data-glyphicon="glyphicon glyphicon-export">列印</a></li>
+                            <li class="nav-item"><a href="#measurDiv" class="popu-ctrl-menu nav-link measur-icon" data-theme="success" data-default-width="200" data-glyphicon="glyphicon glyphicon-resize-horizontal">測量</a></li>
+                            <li class="nav-item"><a href="#basemapDiv" class="posit-ctrl-menu nav-link " data-default-show="true" data-glyphicon="glyphicon-globe">底  圖</a></li>
+                            <li class="nav-item"><a href="#coordinateInfoDiv" class="posit-ctrl-menu nav-link " data-default-show="true" data-glyphicon="glyphicon-info-sign">座標、比例尺</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="map"></div>
+    <div class="popu-ctrl-container row-fluid">
+        <div style="position:absolute;top:55px; right:10px;">
+            <div id="basemapDiv" data-display-direction="right" style="float: right; cursor: pointer"></div>
+        </div>
+        <div id="coordinateInfoDiv" style="position: fixed; bottom: 0; right: 0;  " data-display-direction="right"></div>
+        <div id="measurDiv"></div>
+        <div id="drawDiv"></div>
+        <div id="positionDiv"></div>
+        <div id="meterDiv" class="meter"></div>
+        <div id="layerControlDiv"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+
+    <script src="Scripts/gis/select/bselect/bootstrap-select.min.js"></script>
+
+    <!--<script src="Scripts/respond.min.js"></script>-->
+    <script src="Scripts/gis/Main.js"></script>
+    <script src="Scripts/gis/helper.js"></script>
+    <script src="Scripts/gis/ext/draw/Drawtool.js"></script>
+    <script src="Scripts/gis/ext/draw/LDrawtool.js"></script>
+    <script src="Scripts/gis/ext/meter/LBasePinCtrl.js"></script>
+    <script src="Scripts/gis/ext/leaflet/Dou.Popop.js"></script>
+
+    <script src="Scripts/gis/other/dom-to-image.min.js"></script><!--匯檔-->
+    <script src="Scripts/gis/other/FileSaver.min.js"></script><!--匯檔-->
+
+    <script src="Scripts/prj/initmaphelper.js"></script>
+    <script src="Scripts/prj/prj.js"></script>
+    <script src="Scripts/prj/position.js"></script>
+    <script src="Scripts/prj/layerControl.js"></script>
+    <script src="Scripts/prj/data.js"></script>
+    <!--<script src="Scripts/gis/ext/leaflet/Draw.TextMarker.js"></script>-->
+</body>
+</html>
+
